@@ -1,0 +1,138 @@
+.head1 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.bar {
+    color: #192655;
+}
+
+body {
+    background-color: #FFF2D8;
+}
+
+.baslik {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: math;
+    padding-top: 40px;
+}
+
+.bar rect {
+    transition: fill 0.2s;
+
+}
+
+.bar rect:hover {
+    fill: #ff5733;
+
+}
+
+.range-style {
+    cursor: alias;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 37%;
+    height: 15px;
+    outline-color: #192655;
+    outline: double;
+    background-color: #FFF2D8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    outline-color: #192655;
+    position: absolute;
+    left: 52.4%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.slider:hover {
+    opacity: 1;
+
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 15px;
+    background: #192655;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+
+    background: #ff5733;
+
+}
+
+.button1 {
+    background-color: #FFF2D8;
+    color: #192655;
+    border: 2px solid #192655;
+    width: 68px;
+    height: 54px;
+    font-size: 13px;
+
+}
+
+.popup-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 242, 216, 0.7);
+    z-index: 1;
+    text-align: center;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFF2D8;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px 1px #192655;
+    border-radius: 20px;
+    width: 33%;
+    height: 70%;
+    font-family: sans-serif;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.popup-button {
+    position: absolute;
+    top: 86%;
+    left: 52.5%;
+    transform: translate(-50%, -50%);
+}
+
+.name {
+    position: absolute;
+    top: 92%;
+    left: 52.5%;
+    transform: translate(-50%, -50%);
+}

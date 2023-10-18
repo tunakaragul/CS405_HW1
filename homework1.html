@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Death Statistics Bar Graph</title>
+	<link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+
+	<div class="baslik">Number of Suicides in Nevşehir by Years</div>
+	<div class="container">
+		<svg width="800" height="500" viewBox="0 0 800 500" class="viewboxcontainer">
+
+			<line x1="90" x2="90" y1="10" y2="371" stroke="black" stroke-width="0.5" />
+			<line x1="90" x2="805" y1="370" y2="370" stroke="black" stroke-width="0.5" />
+			<line x1="90" x2="280" y1="160" y2="160" stroke="black" stroke-width="0.3" />
+			<line x1="90" x2="750" y1="60" y2="60" stroke="black" stroke-width="0.3" />
+			<line x1="90" x2="500" y1="10" y2="10" stroke="black" stroke-width="0.3" />
+			<line x1="85" x2="90" y1="35" y2="35" stroke="black" stroke-width="0.5" />
+			<line x1="85" x2="90" y1="135" y2="135" stroke="black" stroke-width="0.5" />
+			<line x1="85" x2="90" y1="255" y2="255" stroke="black" stroke-width="0.5" />
+			<line x1="85" x2="90" y1="355" y2="355" stroke="black" stroke-width="0.5" />
+			<g>
+				<text x="130" y="400">2017</text>
+				<text x="250" y="400">2018</text>
+				<text x="370" y="400">2019</text>
+				<text x="490" y="400">2020</text>
+				<text x="610" y="400">2021</text>
+				<text x="730" y="400">2022</text>
+				<text x="430" y="440" class="head1">Year</text>
+			</g>
+
+			<g class="labels y-labels">
+				<text x="60" y="40">15</text>
+				<text x="60" y="140">10</text>
+				<text x="60" y="260">5</text>
+				<text x="60" y="360">0</text>
+				<text x="50" y="170" class="head1" transform="rotate(-90, 85, 220)">Number of Suicide</text>
+			</g>
+
+			<g class="bar">
+				<rect width="30" height="210" x="135" y="160" fill="#192655"></rect>
+				<text x="145" y="330" fill="white">9</text>
+				<rect width="30" height="210" x="252" y="160" fill="#192655"></rect>
+				<text x="264" y="330" fill="white">9</text>
+				<rect width="30" height="310" x="373" y="60" fill="#192655"></rect>
+				<text x="379" y="330" fill="white">14</text>
+				<rect width="30" height="360" x="490" y="10" fill="#192655"></rect>
+				<text x="496" y="330" fill="white">16</text>
+				<rect width="30" height="310" x="612" y="60" fill="#192655"></rect>
+				<text x="618" y="330" fill="white">14</text>
+				<rect width="30" height="310" x="730" y="60" fill="#192655"></rect>
+				<text x="736" y="330" fill="white">14</text>
+			</g>
+
+		</svg>
+
+	</div>
+
+	<input type="range" min="0" max="100" value="50" class="slider" id="viewbox-slider">
+	<div class="popup-button">
+		<button class="button1" onclick="showPopup()">Click to see the Report</button>
+	</div>
+
+	<div id="popup-screen" class="popup-screen">
+		<div class="popup-content">
+			<span class="popup-close" onclick="closePopup()">&times;</span>
+			<p>
+			<h1>Report</h1>
+			This code represents a webpage showing a graph of suicide statistics in Nevşehir over multiple years. The
+			graph is created using SVG, with grid lines, year labels, and bars representing the number of suicides
+			each year. A zoom slider allows users to adjust the view of the graph. Additionally, there's a button
+			that, when clicked, displays a centered popup screen with a white background. This popup can be
+			customized to show any content, and a close button allows users to exit the popup. JavaScript is used to
+			enable zoom functionality and control the popup's visibility. <br>
+			<br>
+			Svg width="800" height="500" viewBox="0 0 800 500" class="viewboxcontainer": This opening SVG tag
+			defines a container for all the vector graphics. It specifies the width and height of the SVG canvas, in
+			this case, 800 pixels wide and 500 pixels high. The viewBox attribute defines the coordinate system used
+			in the SVG. In this example, it starts at (0, 0) and has a width and height of 800x500 units, aligning
+			perfectly with the canvas size. <br> <br>
+
+			Line elements are used to draw grid lines for the graph. These lines define the
+			vertical and horizontal lines that make up the grid. They set the starting and ending points
+			(x1, y1, x2, y2) and specify attributes like stroke color and width to style the grid lines.
+			<br> <br>
+
+			The text elements are used to display labels for the years (2017, 2018, etc.) and the
+			numbers on the vertical axis (0, 5, 10, 15). These labels are positioned at specific
+			coordinates (x, y) within the SVG canvas. The "text" elements can also be rotated to
+			create vertical labels on the left side of the graph. <br> <br>
+
+			The rect elements are used to create the bars of the bar graph. Each
+			rect represents a year, and its width and height define the size of the
+			bar. The x and y attributes determine the bar's position on the SVG
+			canvas. The fill attribute sets the color of the bar. Inside each "rect"
+			, there is a "text" element that displays the number of suicides on
+			top of the bar. <br> <br>
+
+			These SVG elements work together to form the graphical
+			representation of the suicide statistics, making it easy for
+			users to interpret the data visually. The flexibility of SVG
+			allows for precise positioning, styling, and scaling of the
+			elements, making it a powerful tool for creating interactive and
+			informative data visualizations.
+			</p>
+		</div>
+	</div>
+
+	<div class="name">Tuna Karagül - 28027</div>
+	<script>
+		viewBoxSlider = document.getElementById("viewbox-slider");
+		svgElem = document.querySelector(".viewboxcontainer");
+
+		viewBoxSlider.addEventListener("input", function () {
+			const zoomValue = 1 + (parseFloat(this.value) / 100);
+			const newViewBoxWidth = 1000 / zoomValue;
+			const newViewBoxHeight = 500 / zoomValue;
+			const newViewBoxX = (1000 - newViewBoxWidth) / 2;
+			const newViewBoxY = (500 - newViewBoxHeight) / 2;
+			const viewBox = `${newViewBoxX} ${newViewBoxY} ${newViewBoxWidth} ${newViewBoxHeight}`;
+			svgElem.setAttribute("viewBox", viewBox);
+		});
+		function showPopup() {
+			document.getElementById("popup-screen").style.display = "block";
+		}
+
+		function closePopup() {
+			document.getElementById("popup-screen").style.display = "none";
+		}
+	</script>
+</body>
+
+</html>
